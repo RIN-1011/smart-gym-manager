@@ -26,6 +26,13 @@ public class GymOperationInfoServiceImpl implements GymOperationInfoService{
 
     @Override
     public boolean update(GymOperationInfoDTO gymOperationInfoDTO) {
+        if(gymOperationInfoDTO.getGymOperationInfoRegularHoliday().equals("월화수목금토일")){ //모든 요일 정기휴무로 지정할 시 false
+            return false;
+        }
+        if(gymOperationInfoDTO.getGymOperationInfoOperatingStartTime().equals(gymOperationInfoDTO.getGymOperationInfoOperatingEndTime())){ //운영 시작시간과 종료시간이 같을 시 false
+            return false;
+        }
+
         GymOperationInfo gymOperationInfo = new GymOperationInfo();
         gymOperationInfo.setGymOperationInfoReservationDuration(gymOperationInfoDTO.getGymOperationInfoReservationDuration());
         gymOperationInfo.setGymOperationInfoRegularHoliday(gymOperationInfoDTO.getGymOperationInfoRegularHoliday());

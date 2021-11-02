@@ -1,9 +1,6 @@
 package capstone2021.smartGym_backend.controller;
 
-import capstone2021.smartGym_backend.DTO.GymInfo.GymHolidayCreateDTO;
-import capstone2021.smartGym_backend.DTO.GymInfo.GymHolidayDeleteDTO;
-import capstone2021.smartGym_backend.DTO.GymInfo.GymInfoDTO;
-import capstone2021.smartGym_backend.DTO.GymInfo.GymOperationInfoDTO;
+import capstone2021.smartGym_backend.DTO.GymInfo.*;
 import capstone2021.smartGym_backend.domain.GymHoliday;
 import capstone2021.smartGym_backend.domain.GymInfo;
 import capstone2021.smartGym_backend.service.GymInfoService;
@@ -12,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -37,6 +35,20 @@ public class GymInfoController {
     @ResponseBody
     public GymInfo gymInfoRead(){
         return gymInfoService.read();
+    }
+
+    @CrossOrigin("*")
+    @PostMapping("/gymInfo/equipmentLayout/update") //헬스장 운동기구 배치도 수정
+    @ResponseBody
+    public boolean gymInfoEquipmentLayoutUpdate(@ModelAttribute final GymInfoEquipmentLayoutDTO gymInfoEquipmentLayoutDTO) throws IOException {
+        return gymInfoService.equipmentLayoutUpdate(gymInfoEquipmentLayoutDTO);
+    }
+
+    @CrossOrigin("*")
+    @GetMapping("/gymInfo/equipmentLayout/read") //헬스장 운동기구 배치도 조회
+    @ResponseBody
+    public String gymInfoEquipmentLayoutRead(){
+        return gymInfoService.equipmentLayoutRead();
     }
 
     @CrossOrigin("*")

@@ -30,4 +30,23 @@ public class DBGymInfoRepository implements GymInfoRepository{
     public GymInfo read() {
         return em.find(GymInfo.class, 1);
     }
+
+    @Override
+    public boolean equipmentLayoutUpdate(GymInfo gymInfo) {
+        try{
+            em.merge(gymInfo);
+            return true;
+
+        } catch (PersistenceException | IllegalStateException e){
+            System.out.println("update 오류");
+            return false;
+        }
+    }
+
+    @Override
+    public String equipmentLayoutRead() {
+        GymInfo findGymInfo = em.find(GymInfo.class, 1);
+
+        return findGymInfo.getGymInfoEquipmentLayout();
+    }
 }
