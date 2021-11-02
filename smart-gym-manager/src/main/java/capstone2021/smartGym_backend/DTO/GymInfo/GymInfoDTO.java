@@ -4,7 +4,6 @@ public class GymInfoDTO {
     private String gymInfoName;
     private String gymInfoAddress;
     private String gymInfoPhoneNumber;
-    private String gymInfoEquipmentLayout;
 
     public String getGymInfoName() {
         return gymInfoName;
@@ -28,13 +27,5 @@ public class GymInfoDTO {
 
     public void setGymInfoPhoneNumber(String gymInfoPhoneNumber) {
         this.gymInfoPhoneNumber = gymInfoPhoneNumber;
-    }
-
-    public String getGymInfoEquipmentLayout() {
-        return gymInfoEquipmentLayout;
-    }
-
-    public void setGymInfoEquipmentLayout(String gymInfoEquipmentLayout) {
-        this.gymInfoEquipmentLayout = gymInfoEquipmentLayout;
     }
 }

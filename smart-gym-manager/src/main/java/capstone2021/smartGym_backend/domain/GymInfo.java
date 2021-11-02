@@ -24,9 +24,9 @@ public class GymInfo {
     @NotNull //널 허용 X
     private String gymInfoPhoneNumber;
 
-    @Column(name="gym_info_equipment_layout", length = 5000)
+    @Column(name="gym_info_equipment_layout", length = 5000, columnDefinition = "VARCHAR(5000) default ''")
     @NotNull //널 허용 X
-    private String gymInfoEquipmentLayout;
+    private String gymInfoEquipmentLayout = "";
 
     public int getGymInfoID() {
         return gymInfoID;
