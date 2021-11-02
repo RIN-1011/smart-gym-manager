@@ -17,10 +17,10 @@ public class DBManagerRepository implements ManagerRepository{
     public boolean managerLogin(Manager manager) {
         Manager findManager = em.find(Manager.class, manager.getManagerPassword());
 
-        if(findManager.getManagerPassword().equals(manager.getManagerPassword())){
-            return true;
+        if(findManager == null){
+            return false;
         }
 
-        return false;
+        return true;
     }
 }
